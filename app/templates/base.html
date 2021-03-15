@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/hf.css"/>
+
+    <title>Simple CRUD application</title>
+  </head>
+  <body>
+  <header class="container-fluid">
+    <div class="navbar-nav bd-navbar-nav flex-row row align-items-center">
+        <div class="col-4"></div>
+        <a href="index.html"><H2 class="col text-center">Simple CRUD application</H2></a>
+        <ul class="col-4 row justify-content-end">
+            <li class="btn btn-secondary border"><a href="new_note.html">New Note</a></li>
+        </ul>
+    </div>
+</header>
+    {% block content  %}
+    {% endblock %}
+  </body>
+</html>
