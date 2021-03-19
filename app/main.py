@@ -1,17 +1,19 @@
 from logging import getLogger
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for
 from sqlalchemy import desc
-from werkzeug.exceptions import BadRequest, InternalServerError
+from werkzeug.exceptions import InternalServerError
 
+from fill_db import fill_db
 from models import Note
+from models.base import Base
 from models.db import Session
 from config import SECRET_KEY
 
 
 app = Flask(__name__)
 app.config.update(SECRET_KEY=SECRET_KEY)
-
 logger = getLogger(__name__)
+
 
 @app.route('/')
 @app.route('/index.html')
@@ -66,4 +68,9 @@ def update_note(note_id):
 
 
 if __name__ == '__main__':
-    app.run(port=8001, debug=True)
+    Base.metadata.create_all()
+    data = Session.query(Note).all()
+    if not data:
+        fill_db()
+    app.run()
+

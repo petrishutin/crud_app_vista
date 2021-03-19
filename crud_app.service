@@ -1,0 +1,13 @@
+[Unit]
+Description=simple CRUD web-application
+After=network.target
+After=mysql.service
+Requires=mysql.service
+
+[Service]
+User=myuser
+WorkingDirectory=/home/myuser/crud_app_vista/app
+ExecStart=/home/myuser/crud_app_vista/app/venv/bin/python /home/myuser/crud_app_vista/app/main.py
+Restart=always
+
+[Install]
